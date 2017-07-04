@@ -4,8 +4,9 @@ const path = require('path');
 module.exports = {
   entry: './app/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     loaders: [
@@ -32,6 +33,9 @@ module.exports = {
         },
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

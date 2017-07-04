@@ -1,5 +1,3 @@
-/* global fetch */
-
 import React from 'react'; // eslint-disable-line
 import PropTypes from 'prop-types';
 
@@ -14,20 +12,13 @@ class Form extends React.Component {
     this.state = { city: '' };
   }
 
-  handleGetWeather = () => {
-    const cityHTTP = this.state.city.split(' ').join('%20');
-    fetch(`${baseURL}weather?q=${cityHTTP}&type=accurate&APPID=${APIKEY}`)
-      .then(response => response.json())
-      .then((json) => {
-        console.log(json);
-      });
-  }
-
   handleInputChange = (event) => {
     this.setState({ city: event.target.value });
   }
 
   render() {
+    const { city } = this.state;
+
     return (
       <div className={appClasses.formContainer} style={{ flexDirection: this.props.flexDirection }}>
         <input
@@ -35,8 +26,9 @@ class Form extends React.Component {
           onChange={this.handleInputChange}
           placeholder="San Jose, CA"
           type="text"
+          value={city}
         />
-        <button className={appClasses.button} onClick={this.handleGetWeather} type="button">
+        <button className={appClasses.button} onClick={() => this.props.onSubmit(city)} type="button">
           Get Weather
         </button>
       </div>
@@ -50,6 +42,7 @@ Form.defaultProps = {
 
 Form.propTypes = {
   flexDirection: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;
