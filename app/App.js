@@ -1,6 +1,7 @@
 import React from 'react'; // eslint-disable-line
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import Detail from './Detail';
 import Forecast from './Forecast';
 import Form from './Form';
 import appClasses from './app.css';
@@ -16,7 +17,7 @@ const App = () => (
               flexDirection="row"
               onSubmit={(city) => {
                 props.history.push({ // eslint-disable-line
-                  pathname: 'forecast',
+                  pathname: '/forecast',
                   search: `?city=${city}`,
                 });
               }}
@@ -39,7 +40,7 @@ const App = () => (
               flexDirection="column"
               onSubmit={(city) => {
                 props.history.push({ // eslint-disable-line
-                  pathname: 'forecast',
+                  pathname: '/forecast',
                   search: `?city=${city}`,
                 });
               }}
@@ -48,6 +49,7 @@ const App = () => (
         )}
       />
       <Route path="/forecast" component={Forecast} />
+      <Route path="/details/:day" component={Detail} />
     </div>
   </BrowserRouter>
 );

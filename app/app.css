@@ -68,10 +68,11 @@
 }
 
 .dayContainer {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  cursor: pointer;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 35px;
 }
 

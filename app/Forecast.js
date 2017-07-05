@@ -13,7 +13,7 @@ const Day = (props) => {
   const date = props.day.dt;
   const icon = props.day.weather[0].icon;
   return (
-    <div className={appClasses.dayContainer}>
+    <div className={appClasses.dayContainer} onClick={props.onClick} role="link" tabIndex="-1">
       <img className={appClasses.dayIcon} src={`./app/images/weather-icons/${icon}.svg`} alt="Weather" />
       <h2 className={appClasses.date}>{(new Date(date * 1000)).toDateString()}</h2>
     </div>
@@ -25,6 +25,7 @@ Day.propTypes = {
     dt: PropTypes.number.isRequired,
     weather: PropTypes.array.isRequired,
   }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 class Forecast extends React.Component {
@@ -56,6 +57,13 @@ class Forecast extends React.Component {
       });
   }
 
+  handleClick = (day) => {
+    this.props.history.push({ // eslint-disable-line
+      pathname: `/details/${this.state.city}`,
+      state: day,
+    });
+  }
+
   render() {
     const { city, forecast } = this.state;
 
@@ -64,7 +72,9 @@ class Forecast extends React.Component {
       (
         <div className={appClasses.forecastContainer}>
           <h1 className={appClasses.forecastHeader}>{city}</h1>
-          {forecast.map(day => <Day key={day.dt} day={day} />)}
+          {forecast.map(day =>
+            <Day key={day.dt} day={day} onClick={() => this.handleClick(day)} />,
+          )}
         </div>
       );
   }
