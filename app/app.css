@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.navBar {
+.navbar {
   background: rgba(252, 90, 44, 0.89);
   color: #ffffff;
   display: flex;
@@ -14,7 +14,7 @@
   padding: 5px;
 }
 
-.header {
+.homeHeader {
   color: #ffffff;
   font-size: 45px;
   font-weight: 100;
@@ -55,4 +55,40 @@
   margin: 10px;
   padding: 6px 12px;
   white-space: nowrap;
+}
+
+.forecastContainer {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  max-width: 1200px;
+}
+
+.dayContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 35px;
+}
+
+.forecastHeader {
+  font-size: 65px;
+  color: #333333;
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+}
+
+.date {
+  font-size: 30px;
+  color: #333333;
+  font-weight: 100;
+}
+
+.dayIcon {
+  height: 130px;
 }

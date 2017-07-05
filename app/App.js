@@ -10,7 +10,7 @@ const App = () => (
     <div style={{ height: '100%' }}>
       <Route
         render={props => (
-          <div className={appClasses.navBar}>
+          <div className={appClasses.navbar}>
             <h1>Weather</h1>
             <Form
               flexDirection="row"
@@ -32,7 +32,7 @@ const App = () => (
             className={appClasses.container}
             style={{ backgroundImage: 'url(\'./app/images/pattern.svg\')' }}
           >
-            <h1 className={appClasses.header}>
+            <h1 className={appClasses.homeHeader}>
               Enter a City and State
             </h1>
             <Form

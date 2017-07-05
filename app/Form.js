@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 
 import appClasses from './app.css';
 
-const baseURL = 'http://api.openweathermap.org/data/2.5/';
-const APIKEY = '00417f5cb17e96e477f40049642cf63f';
-
 class Form extends React.Component {
   constructor(props) {
     super(props);
