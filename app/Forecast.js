@@ -9,15 +9,19 @@ import appClasses from './app.css';
 const baseURL = 'http://api.openweathermap.org/data/2.5/';
 const APIKEY = '00417f5cb17e96e477f40049642cf63f';
 
-const Day = (props) => {
+export const Day = (props) => {
   const date = props.day.dt;
   const icon = props.day.weather[0].icon;
   return (
     <div className={appClasses.dayContainer} onClick={props.onClick} role="link" tabIndex="-1">
-      <img className={appClasses.dayIcon} src={`./app/images/weather-icons/${icon}.svg`} alt="Weather" />
+      <img className={appClasses.dayIcon} src={`/app/images/weather-icons/${icon}.svg`} alt="Weather" />
       <h2 className={appClasses.date}>{(new Date(date * 1000)).toDateString()}</h2>
     </div>
   );
+};
+
+Day.defaultProps = {
+  onClick: () => {},
 };
 
 Day.propTypes = {
@@ -25,7 +29,7 @@ Day.propTypes = {
     dt: PropTypes.number.isRequired,
     weather: PropTypes.array.isRequired,
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 class Forecast extends React.Component {

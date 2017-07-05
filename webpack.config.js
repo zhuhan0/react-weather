@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line
 const path = require('path');
+const webpack = require('webpack');
 
-module.exports = {
+const config = {
   entry: './app/index.js',
   output: {
     filename: 'bundle.js',
@@ -45,3 +46,16 @@ module.exports = {
     }),
   ],
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
+    new webpack.optimize.UglifyJsPlugin() // eslint-disable-line
+  );
+}
+
+module.exports = config;

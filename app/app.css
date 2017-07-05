@@ -93,3 +93,11 @@
 .dayIcon {
   height: 130px;
 }
+
+.detailContainer {
+  font-size: 34px;
+  font-weight: 100;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
